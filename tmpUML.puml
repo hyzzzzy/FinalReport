@@ -1,0 +1,152 @@
+@startuml
+class ddwucom.mobile.ma01_20191666.FestivalAdapter {
++ {static} String TAG
+- LayoutInflater inflater
+- Context context
+- int layout
+- ArrayList<FestivalDTO> list
++ int getCount()
++ FestivalDTO getItem(int)
++ long getItemId(int)
++ View getView(int,View,ViewGroup)
++ void setList(ArrayList<FestivalDTO>)
+}
+class ddwucom.mobile.ma01_20191666.FestivalAdapter.ViewHolder {
++ TextView tvName
++ TextView tvOpar
++ TextView tvDate
+}
+class ddwucom.mobile.ma01_20191666.MyFestivalAdapter {
++ {static} String TAG
+- LayoutInflater inflater
+- Context context
+- int layout
+- ArrayList<FestivalDTO> list
++ int getCount()
++ FestivalDTO getItem(int)
++ long getItemId(int)
++ View getView(int,View,ViewGroup)
++ void setList(ArrayList<FestivalDTO>)
+}
+class ddwucom.mobile.ma01_20191666.MyFestivalAdapter.ViewHolder {
++ TextView tvName
++ TextView tvOpar
++ TextView tvDate
++ TextView tvMemo
+}
+class ddwucom.mobile.ma01_20191666.LikedFestivalActivity {
+~ ListView lvList
+~ MyFestivalAdapter adapter
+~ ArrayList<FestivalDTO> resultList
+~ FestivalDBManager festivalDBManager
+~ int DETAIL_CODE_IN_LIKED
+# void onCreate(Bundle)
+# void onResume()
+}
+class ddwucom.mobile.ma01_20191666.MainActivity {
+~ ListView lvList
+~ String apiAddress
+~ FestivalAdapter adapter
+~ ArrayList<FestivalDTO> resultList
+~ FestivalXmlParser parser
+~ NetworkManager networkManager
+~ int DETAIL_CODE
+# void onCreate(Bundle)
+# void onResume()
++ boolean onCreateOptionsMenu(Menu)
++ void onMenuItemClick(MenuItem)
+}
+class ddwucom.mobile.ma01_20191666.MainActivity.NetworkAsyncTask {
+~ {static} String NETWORK_ERR_MSG
++ {static} String TAG
+~ ProgressDialog progressDlg
+# void onPreExecute()
+# String doInBackground(String)
+# void onCancelled(String)
+# void onPostExecute(String)
+}
+class ddwucom.mobile.ma01_20191666.FestivalDTO {
+- long _id
+- String name
+- String startDate
+- String endDate
+- String loc
+- String latitude
+- String longitude
+- String introduction
+- String memo
++ String getMemo()
++ void setMemo(String)
++ String getLatitude()
++ void setLatitude(String)
++ String getLongitude()
++ void setLongitude(String)
++ long get_id()
++ String getIntroduction()
++ void setIntroduction(String)
++ String getName()
++ void setName(String)
++ String getStartDate()
++ void setStartDate(String)
++ String getEndDate()
++ void setEndDate(String)
++ String getLoc()
++ void setLoc(String)
+}
+class ddwucom.mobile.ma01_20191666.SearchActivity {
+~ String apiAddress
+~ FestivalAdapter adapter
+~ NetworkManager networkManager
+~ ArrayList<FestivalDTO> resultList
+~ FestivalXmlParser parser
+~ ListView lvList
+~ EditText etSearchName
+~ int DETAIL_CODE_IN_SEARCH
+# void onCreate(Bundle)
++ void onClick(View)
+}
+class ddwucom.mobile.ma01_20191666.SearchActivity.NetworkAsyncTask {
+~ {static} String NETWORK_ERR_MSG
++ {static} String TAG
+~ ProgressDialog progressDlg
+# void onPreExecute()
+# String doInBackground(String)
+# void onCancelled(String)
+# void onPostExecute(String)
+}
+class ddwucom.mobile.ma01_20191666.DetailActivity {
+- {static} int MY_PERMISSIONS_REQ_LOC
++ {static} String TAG
+- GoogleMap mGoogleMap
+- LocationManager locationManager
+- Marker centerMarker
+- ArrayList<Marker> markerArrayList
+~ FestivalDTO Festival
+~ TextView etName
+~ EditText etMemo
+~ FestivalDBManager festivalDBManager
+~ LocationListener locationListener
+~ OnMapReadyCallback mapReadyCallBack
+# void onCreate(Bundle)
++ void onClick(View)
+- void locationUpdate()
++ boolean dispatchTouchEvent(MotionEvent)
+- boolean checkPermission()
++ void onRequestPermissionsResult(int,String[],int[])
+}
+
+
+android.widget.BaseAdapter <|-- ddwucom.mobile.ma01_20191666.FestivalAdapter
+ddwucom.mobile.ma01_20191666.FestivalAdapter +.. ddwucom.mobile.ma01_20191666.FestivalAdapter.ViewHolder
+android.widget.BaseAdapter <|-- ddwucom.mobile.ma01_20191666.MyFestivalAdapter
+ddwucom.mobile.ma01_20191666.MyFestivalAdapter +.. ddwucom.mobile.ma01_20191666.MyFestivalAdapter.ViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- ddwucom.mobile.ma01_20191666.LikedFestivalActivity
+androidx.appcompat.app.AppCompatActivity <|-- ddwucom.mobile.ma01_20191666.MainActivity
+ddwucom.mobile.ma01_20191666.MainActivity +.. ddwucom.mobile.ma01_20191666.MainActivity.NetworkAsyncTask
+ddwucom.mobile.ma01_20191666.AsyncTask <|-- ddwucom.mobile.ma01_20191666.MainActivity.NetworkAsyncTask
+java.io.Serializable <|.. ddwucom.mobile.ma01_20191666.FestivalDTO
+androidx.appcompat.app.AppCompatActivity <|-- ddwucom.mobile.ma01_20191666.SearchActivity
+ddwucom.mobile.ma01_20191666.SearchActivity +.. ddwucom.mobile.ma01_20191666.SearchActivity.NetworkAsyncTask
+ddwucom.mobile.ma01_20191666.AsyncTask <|-- ddwucom.mobile.ma01_20191666.SearchActivity.NetworkAsyncTask
+androidx.appcompat.app.AppCompatActivity <|-- ddwucom.mobile.ma01_20191666.DetailActivity
+@enduml

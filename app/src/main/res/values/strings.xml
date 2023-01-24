@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">렛츠축제</string>
+    <string name="festival_list">http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api?serviceKey=ZFl%2Bdh69A%2BGjesMisyN5AG9folm4YqvRk%2B8V4Pl3y%2BCyqZ54olrMGzEF7p%2FTSfGBiNrq3Zoqr%2BYgvU%2FmlntV7A%3D%3D&amp;pageNo=0&amp;numOfRows=30&amp;type=xml</string>
+    <string name="festival_name_search">http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api?serviceKey=ZFl%2Bdh69A%2BGjesMisyN5AG9folm4YqvRk%2B8V4Pl3y%2BCyqZ54olrMGzEF7p%2FTSfGBiNrq3Zoqr%2BYgvU%2FmlntV7A%3D%3D&amp;pageNo=0&amp;numOfRows=30&amp;type=xml&amp;fstvlNm=</string>
+</resources>
